@@ -25,24 +25,53 @@
 - [x] `src/app.js` — Express entry point with Swagger UI at `/api-docs`
 
 ## Phase 3: Frontend (React + Vite + Tailwind + shadcn) ⏳ IN PROGRESS
-- [x] Vite project scaffolded (`frontend/` directory)
-- [x] Dependencies installed: react-router-dom, axios, recharts, @tanstack/react-table, jspdf, xlsx, lucide-react, clsx, tailwind-merge, class-variance-authority, Radix UI primitives, TailwindCSS v4
-- [ ] **Configure Tailwind** — update `vite.config.js` with `@tailwindcss/vite` plugin, create `src/index.css` with `@import "tailwindcss"`
-- [ ] **shadcn/ui utility** — create `src/lib/utils.js` with `cn()` helper
-- [ ] **shadcn components** — manually create components in `src/components/ui/`:
-  - button, input, label, select, slider, dialog, alert-dialog, dropdown-menu, table, tabs, toast, card, badge
-- [ ] **API service** — `src/services/api.js` (Axios instance with JWT interceptor)
-- [ ] **Auth context** — `src/contexts/AuthContext.jsx` (login state, token management)
-- [ ] **Hooks** — `useAuth.js`, `usePermission.js`
-- [ ] **Layout** — `src/components/Layout/` (sidebar, header, protected route wrapper)
-- [ ] **Pages**:
-  - [ ] `LoginPage.jsx` — email/password form, JWT storage
-  - [ ] `DashboardPage.jsx` — summary cards, overview
-  - [ ] `EmployeesPage.jsx` — CRUD table with search, role-based buttons
-  - [ ] `DepartmentsPage.jsx` — CRUD table with search, role-based buttons
-  - [ ] `SpendingsPage.jsx` — CRUD table, role-based buttons
-  - [ ] `ReportPage.jsx` — joined data table, filters (dropdown year/month, slider value range, input min-max), export Excel/PDF buttons
-- [ ] **Access Denied Alert** — show "Akses ditolak: Hanya Admin yang dapat melakukan aksi ini." when User tries Update/Delete
+
+### ✅ Foundation
+- [x] `vite.config.js` — `@tailwindcss/vite` plugin, `@/` path alias, API proxy (`/api` → localhost:3001)
+- [x] `src/index.css` — Tailwind v4 `@import "tailwindcss"` + `@theme` design tokens (primary blue, surface slate, success/warning/danger, radius, animations)
+- [x] `index.html` — title "PGAS Solution", meta description, lang="id"
+- [x] `src/lib/utils.js` — `cn()` (clsx + tailwind-merge), `formatRupiah()`, `formatDate()`, `formatDateInput()`
+
+### ✅ shadcn/ui Components (13 files created)
+- [x] `src/components/ui/button.jsx` — CVA variants (default, destructive, outline, secondary, ghost, link)
+- [x] `src/components/ui/input.jsx` — styled input with focus ring
+- [x] `src/components/ui/label.jsx` — Radix Label
+- [x] `src/components/ui/card.jsx` — Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter
+- [x] `src/components/ui/badge.jsx` — CVA variants (default, secondary, success, warning, destructive, outline)
+- [x] `src/components/ui/select.jsx` — Radix Select (Trigger, Content, Item, Label, Separator)
+- [x] `src/components/ui/slider.jsx` — Radix Slider (dual-thumb support)
+- [x] `src/components/ui/dialog.jsx` — Radix Dialog (modal for CRUD forms)
+- [x] `src/components/ui/alert-dialog.jsx` — Radix AlertDialog (delete confirmation)
+- [x] `src/components/ui/dropdown-menu.jsx` — Radix DropdownMenu (user menu)
+- [x] `src/components/ui/table.jsx` — Table, TableHeader, TableBody, TableRow, TableHead, TableCell
+- [x] `src/components/ui/toast.jsx` — Radix Toast (variants: default, success, destructive, warning)
+- [x] `src/components/ui/toaster.jsx` — Toaster wrapper rendering active toasts
+
+### ✅ API Service + Auth
+- [x] `src/services/api.js` — Axios instance, JWT request interceptor, 401 response interceptor, API methods for auth/departments/employees/spendings/reports
+- [x] `src/contexts/AuthContext.jsx` — AuthProvider, login/logout, localStorage persistence, isAdmin flag
+- [x] `src/hooks/useAuth.js` — useAuth() consuming AuthContext
+- [x] `src/hooks/usePermission.js` — usePermission() with checkPermission() showing "Akses ditolak" toast
+- [x] `src/hooks/useToast.js` — imperative toast system (add/dismiss/remove)
+
+### ✅ Layout & Routing
+- [x] **Layout** — `Sidebar.jsx`, `Header.jsx`, `AppLayout.jsx`, `ProtectedRoute.jsx`
+- [x] **App Entry** — rewrite `main.jsx` (BrowserRouter + AuthProvider + Toaster), rewrite `App.jsx` (React Router routes)
+- [x] **Delete App.css** — unused boilerplate removed
+
+### ✅ Pages
+- [x] `LoginPage.jsx` — email/password form, JWT storage
+- [x] `DashboardPage.jsx` — summary cards, Recharts bar chart
+- [x] `EmployeesPage.jsx` — CRUD table with search, role-based buttons (+ Dialog/AlertDialog)
+- [x] `DepartmentsPage.jsx` — CRUD table with search, role-based buttons (+ Dialog/AlertDialog)
+- [x] `SpendingsPage.jsx` — CRUD table, role-based buttons (+ Dialog/AlertDialog)
+- [x] `ReportPage.jsx` — joined data table, filters (dropdown year/month, slider value range, input min-max), export Excel/PDF buttons
+
+### ✅ Reusable Components
+- [x] `DataTable.jsx` — reusable TanStack Table wrapper with sorting, pagination, search
+- [x] **Access Denied Alert** — via `usePermission()` showing "Akses ditolak: Hanya Admin..." toast
+- [x] `utils/exportExcel.js` — SheetJS helper
+- [x] `utils/exportPdf.js` — jsPDF helper
 
 ## Phase 4: Docker & Deployment ✅ COMPLETE
 - [x] `docker-compose.yml` — db, backend, nginx, certbot services
@@ -52,12 +81,11 @@
 - [x] `.dockerignore`
 - [x] `.gitignore`
 
-## Phase 5: Documentation 🔲 NOT STARTED
-- [ ] `docs/uml/erd.md` — Mermaid ERD diagram
-- [ ] `docs/uml/use-case.md` — Mermaid Use Case diagram
-- [ ] `docs/uml/sequence.md` — Mermaid Sequence diagram
-- [ ] `README.md` — setup guide, screenshots, architecture, API docs link, demo credentials
-- [ ] Git init + initial commit with conventional commits
+## Phase 5: Documentation ✅ COMPLETE
+- [x] `docs/uml/erd.md` — Mermaid ERD diagram
+- [x] `docs/uml/use-case.md` — Mermaid Use Case diagram
+- [x] `docs/uml/sequence.md` — Mermaid Sequence diagram (Login, CRUD, Export)
+- [x] `README.md` — setup guide, architecture, API docs link, demo credentials
 
 ---
 
@@ -76,13 +104,45 @@ bcrypt.hash('admin123', 10).then(console.log);
 Then update `database/seeds/001_seed_data.sql` with the real hashes.
 
 ### What to Do Next (Priority Order)
-1. **Frontend source files** — this is the biggest remaining chunk (~70% of remaining work)
-2. **Test backend locally** — `docker compose up db backend` then hit `/api/health`
-3. **UML docs** — quick wins, can be done from PRD diagrams
-4. **README.md** — write after frontend is done
-5. **Deploy to VPS** — final step after everything works locally
+1. **Layout components** — Sidebar, Header, AppLayout, ProtectedRoute (~4 files)
+2. **App entry rewrite** — main.jsx + App.jsx with React Router (~2 files)
+3. **LoginPage** — first functional page
+4. **DataTable** — reusable component needed by 4 pages
+5. **CRUD pages** — Employees, Departments, Spendings (~3 pages)
+6. **ReportPage** — most complex page (filters, export)
+7. **DashboardPage** — summary cards + chart
+8. **UML docs** — quick wins from PRD diagrams
+9. **README.md** — write after frontend is done
+10. **Build test** — `npm run build` to verify everything compiles
+11. **Deploy to VPS** — final step
+
+### Files Created This Session (22 files)
+```
+frontend/vite.config.js              (modified)
+frontend/index.html                  (modified)
+frontend/src/index.css               (modified)
+frontend/src/lib/utils.js            (new)
+frontend/src/components/ui/button.jsx       (new)
+frontend/src/components/ui/input.jsx        (new)
+frontend/src/components/ui/label.jsx        (new)
+frontend/src/components/ui/card.jsx         (new)
+frontend/src/components/ui/badge.jsx        (new)
+frontend/src/components/ui/select.jsx       (new)
+frontend/src/components/ui/slider.jsx       (new)
+frontend/src/components/ui/dialog.jsx       (new)
+frontend/src/components/ui/alert-dialog.jsx (new)
+frontend/src/components/ui/dropdown-menu.jsx(new)
+frontend/src/components/ui/table.jsx        (new)
+frontend/src/components/ui/toast.jsx        (new)
+frontend/src/components/ui/toaster.jsx      (new)
+frontend/src/services/api.js               (new)
+frontend/src/contexts/AuthContext.jsx       (new)
+frontend/src/hooks/useAuth.js              (new)
+frontend/src/hooks/usePermission.js        (new)
+frontend/src/hooks/useToast.js             (new)
+```
 
 ### Domain & VPS
 - **Domain**: `pgas.heyfik.net`
 - **VPS IP**: `43.129.57.220`
-- **Deadline**: Jumat, 25 Juli 2026 — 23:59 WIB
+- **Deadline**: Jumat, 24 Juli 2026 — 23:59 WIB
