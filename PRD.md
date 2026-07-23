@@ -736,44 +736,44 @@ Isi email:
 ## 12. Checklist Deliverables
 
 | # | Deliverable | Status |
-|---|---|---|
-| 1 | Database: 3 tabel (Departments, Employees, Spendings) | ⬜ |
-| 2 | Database: Dummy data (seed) | ⬜ |
-| 3 | Database: Query SELECT ALL | ⬜ |
-| 4 | Database: Query JOIN 3 tabel | ⬜ |
-| 5 | Database: Query ORDER BY value ASC | ⬜ |
-| 6 | Database: Query filtered report 2020–2025 | ⬜ |
-| 7 | Database: Screenshot semua query results | ⬜ |
-| 8 | Backend: Express.js REST API | ⬜ |
-| 9 | Backend: JWT Authentication | ⬜ |
-| 10 | Backend: Role-based access (Admin/User) | ⬜ |
-| 11 | Backend: CRUD endpoints (all entities) | ⬜ |
-| 12 | Backend: Report endpoint + filters | ⬜ |
-| 13 | Backend: Export Excel & PDF | ⬜ |
-| 14 | Backend: Swagger API documentation | ⬜ |
-| 15 | Frontend: Login page | ⬜ |
-| 16 | Frontend: Dashboard | ⬜ |
-| 17 | Frontend: CRUD pages (3 entities) | ⬜ |
-| 18 | Frontend: Search (employee & department) | ⬜ |
-| 19 | Frontend: Joined data table (sorted) | ⬜ |
-| 20 | Frontend: Report page + filters (dropdown, slider, input) | ⬜ |
-| 21 | Frontend: Export buttons (Excel, PDF) | ⬜ |
-| 22 | Frontend: Access denied alert (User → Update/Delete) | ⬜ |
-| 23 | Docs: UML diagrams (ERD, Use Case, Sequence) | ⬜ |
-| 24 | Docs: README.md profesional | ⬜ |
-| 25 | Docs: Screenshot database queries | ⬜ |
-| 26 | Deployment: Docker Compose (NGINX + MySQL + Backend) | ⬜ |
-| 27 | Deployment: SSL via Certbot container | ⬜ |
-| 28 | Git: Clean history, conventional commits | ⬜ |
-| 29 | Power BI: Data export/template | ⬜ |
-| 30 | Email: Kirim ke semua recipient | ⬜ |
+|---|---|---|---|
+| 1 | Database: 3 tabel (Departments, Employees, Spendings) | ✅ |
+| 2 | Database: Dummy data (seed) | ✅ |
+| 3 | Database: Query SELECT ALL | ✅ |
+| 4 | Database: Query JOIN 3 tabel | ✅ |
+| 5 | Database: Query ORDER BY value ASC | ✅ |
+| 6 | Database: Query filtered report 2020–2025 | ✅ |
+| 7 | Database: Screenshot semua query results | ⬜ (manual) |
+| 8 | Backend: Express.js REST API | ✅ |
+| 9 | Backend: JWT Authentication | ✅ |
+| 10 | Backend: Role-based access (Admin/User) | ✅ |
+| 11 | Backend: CRUD endpoints (all entities) | ✅ |
+| 12 | Backend: Report endpoint + filters | ✅ |
+| 13 | Backend: Export Excel & PDF | ✅ |
+| 14 | Backend: Swagger API documentation | ✅ |
+| 15 | Frontend: Login page | ✅ |
+| 16 | Frontend: Dashboard | ✅ |
+| 17 | Frontend: CRUD pages (3 entities) | ✅ |
+| 18 | Frontend: Search (employee & department) | ✅ |
+| 19 | Frontend: Joined data table (sorted) | ✅ |
+| 20 | Frontend: Report page + filters (dropdown, slider, input) | ✅ |
+| 21 | Frontend: Export buttons (Excel, PDF) | ✅ |
+| 22 | Frontend: Access denied alert (User → Update/Delete) | ✅ |
+| 23 | Docs: UML diagrams (ERD, Use Case, Sequence) | ✅ |
+| 24 | Docs: README.md profesional | ✅ |
+| 25 | Docs: Screenshot database queries | ⬜ (manual) |
+| 26 | Deployment: Docker Compose (NGINX + MySQL + Backend) | ✅ |
+| 27 | Deployment: SSL via Certbot container | ✅ (config) |
+| 28 | Git: Clean history, conventional commits | ✅ |
+| 29 | Power BI: Data export/template | ✅ |
+| 30 | Email: Kirim ke semua recipient | ⬜ (manual) |
 
 ---
 
 ## Deadline
 
 > [!CAUTION]
-> **Deadline: Jumat, 25 Juli 2026 pukul 23:59 WIB**
+> **Deadline: Jumat, 24 Juli 2026 pukul 23:59 WIB**
 > Waktu tersisa: **~2 hari** dari sekarang (24 Juli 2026).
 
 ## Resolved Decisions
