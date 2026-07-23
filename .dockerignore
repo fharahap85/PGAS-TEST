@@ -1,0 +1,10 @@
+node_modules
+npm-debug.log
+.env
+.env.local
+certbot
+mysql_data
+*.md
+docs
+.git
+.gitignore
