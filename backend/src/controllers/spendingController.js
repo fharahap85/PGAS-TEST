@@ -10,9 +10,8 @@ class SpendingController {
    */
   async getAll(req, res) {
     try {
-      const spendings = await Spending.findAll({ orderBy: 'spending_date', order: 'DESC' });
-      const total = await Spending.count();
-      res.json({ success: true, data: spendings, total });
+      const result = await Spending.getJoinedData({ sortBy: 'spending_date', sortOrder: 'DESC', limit: 99999 });
+      res.json({ success: true, data: result.data, total: result.total });
     } catch (error) {
       console.error('Get spendings error:', error);
       res.status(500).json({ success: false, message: 'Internal server error' });
