@@ -140,7 +140,17 @@ PGAS-TEST/
 
 ## Screenshots
 
-(Screenshots database queries ada di `docs/screenshots/`)
+### Database Queries
+
+| Query | Screenshot |
+|-------|-----------|
+| Seluruh Data Departments | ![Departments](docs/screenshots/01%20Seluruh%20data%20departments.png) |
+| Seluruh Data Employees | ![Employees](docs/screenshots/02%20Seluruh%20data%20employees.png) |
+| Seluruh Data Spendings | ![Spendings](docs/screenshots/03%20Seluruh%20data%20spendings.png) |
+| JOIN 3 Tabel | ![JOIN](docs/screenshots/04%20Gabungan%20employees%2C%20departments%2C%20spendings.png) |
+| ORDER BY value ASC | ![Order By](docs/screenshots/05%20Pengurutan%20berdasarkan%20nilai%20pengeluaran%20terkecil%20ke%20terbesar.png) |
+| Laporan Filter Tahun Bulan | ![Filter 1](docs/screenshots/06%20Laporan%20spending%20tahun%202020%20hingga%20tahun%20terbaru%20(2025).png) |
+| Laporan Filter Value Range | ![Filter 2](docs/screenshots/07%20Report%20With%20value%20range%20filter%20(example%20100000%20-%201000000).png) |
 
 ## Power BI
 
