@@ -257,7 +257,7 @@ export default function ReportPage() {
             <ResponsiveContainer width="100%" height={288}>
               <BarChart data={deptChart}>
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
+                  <XAxis dataKey="name" angle={-20} textAnchor="end" height={60} interval={0} />
                   <YAxis tickFormatter={(v) => `${(v / 1000000).toFixed(1)} Jt`} />
                   <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
                   <Bar dataKey="value" fill="#6375eb" />
