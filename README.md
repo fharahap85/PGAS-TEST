@@ -1,4 +1,5 @@
 # PGAS Solution — Sistem Manajemen Data Karyawan
+> Dikerjakan oleh Abdullah Fikri Harahap — Soal Test Pemrograman ICT PT PGAS Solution
 
 Full-stack web application untuk manajemen data karyawan, departemen, dan pengeluaran (spending). Dibangun untuk **Soal Test Pemrograman ICT PT PGAS Solution**.
 
