@@ -85,7 +85,7 @@ export default function DepartmentsPage() {
   }
 
   const columns = [
-    { accessorKey: 'department_id', header: 'ID', enableSorting: true },
+    { id: 'no', header: 'No', cell: ({ row }) => row.index + 1 },
     { accessorKey: 'department_name', header: 'Nama Departemen', enableSorting: true },
     {
       id: 'actions',
