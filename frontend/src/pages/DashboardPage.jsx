@@ -130,15 +130,12 @@ export default function DashboardPage() {
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
                 <XAxis 
                   dataKey="name" 
-                  tick={{ fontSize: 11, fill: '#647b99', fontWeight: 500 }} 
-                  stroke="#cbd6e2" 
+                  tick={{ fontSize: 11, fill: '#647b99' }} 
                   dy={10}
                 />
                 <YAxis 
-                  tick={{ fontSize: 11, fill: '#647b99', fontWeight: 500 }} 
-                  stroke="#cbd6e2" 
-                  dx={-5}
-                  tickFormatter={(val) => `Rp ${val / 1000000}M`}
+                  tick={{ fontSize: 11, fill: '#647b99' }} 
+                  tickFormatter={(val) => `${(val / 1000000).toFixed(1)} Jt`}
                 />
                 <Tooltip
                   formatter={(value) => [formatRupiah(value), 'Total Pengeluaran']}
