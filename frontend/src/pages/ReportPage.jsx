@@ -4,10 +4,14 @@ import { DataTable } from '@/components/DataTable'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
-import { Card, CardContent } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatRupiah, formatDate } from '@/lib/utils'
 import { useToast } from '@/hooks/useToast'
-import { FileSpreadsheet, FileText } from 'lucide-react'
+import { FileSpreadsheet, FileText, Wallet, CreditCard, TrendingUp, Building2 } from 'lucide-react'
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
+  LineChart, Line,
+} from 'recharts'
 
 const months = [
   { value: '', label: 'Semua Bulan' },
@@ -78,6 +82,24 @@ export default function ReportPage() {
       toast({ title: 'Error', description: 'Gagal mengexport', variant: 'destructive' })
     }
   }
+
+  const deptTotals = {}
+  const yearTotals = {}
+  const monthTotals = {}
+  data.forEach((r) => {
+    const name = r.department_name || 'Unknown'
+    deptTotals[name] = (deptTotals[name] || 0) + Number(r.value)
+
+    const y = r.year || new Date(r.spending_date).getFullYear()
+    yearTotals[y] = (yearTotals[y] || 0) + Number(r.value)
+  })
+
+  const deptChart = Object.entries(deptTotals).map(([name, value]) => ({ name, value }))
+  const yearChart = Object.entries(yearTotals)
+    .sort(([a], [b]) => a - b)
+    .map(([year, value]) => ({ year, value }))
+
+  const totalValue = data.reduce((sum, r) => sum + Number(r.value), 0)
 
   const columns = [
     { accessorKey: 'employee_name', header: 'Nama Karyawan', enableSorting: true },
@@ -176,6 +198,94 @@ export default function ReportPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Summary Cards */}
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <Card className="rounded-2xl shadow-sm">
+          <CardContent className="p-5 flex items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 p-3 text-white shadow-lg shadow-blue-500/20">
+              <CreditCard className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-surface-500 tracking-wide uppercase">Transaksi</p>
+              <p className="text-xl font-extrabold text-surface-900">{data.length}</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-2xl shadow-sm">
+          <CardContent className="p-5 flex items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 p-3 text-white shadow-lg shadow-emerald-500/20">
+              <Wallet className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-surface-500 tracking-wide uppercase">Total Nilai</p>
+              <p className="text-xl font-extrabold text-surface-900">{formatRupiah(totalValue)}</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-2xl shadow-sm">
+          <CardContent className="p-5 flex items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-br from-amber-400 to-orange-600 p-3 text-white shadow-lg shadow-amber-500/20">
+              <Building2 className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-surface-500 tracking-wide uppercase">Departemen</p>
+              <p className="text-xl font-extrabold text-surface-900">{Object.keys(deptTotals).length}</p>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-2xl shadow-sm">
+          <CardContent className="p-5 flex items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-br from-violet-500 to-purple-700 p-3 text-white shadow-lg shadow-violet-500/20">
+              <TrendingUp className="h-5 w-5" />
+            </div>
+            <div>
+              <p className="text-xs font-bold text-surface-500 tracking-wide uppercase">Tahun</p>
+              <p className="text-xl font-extrabold text-surface-900">{yearChart.length}</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Charts */}
+      <div className="grid gap-6 lg:grid-cols-2">
+        <Card className="rounded-2xl shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-base font-bold">Pengeluaran per Departemen</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="h-72">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={deptChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
+                  <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
+                  <YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}M`} />
+                  <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
+                  <Bar dataKey="value" fill="#6375eb" radius={[6, 6, 0, 0]} maxBarSize={40} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="rounded-2xl shadow-sm">
+          <CardHeader>
+            <CardTitle className="text-base font-bold">Tren Pengeluaran per Tahun</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="h-72">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={yearChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
+                  <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
+                  <YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}M`} />
+                  <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
+                  <Line type="monotone" dataKey="value" stroke="#6375eb" strokeWidth={3} dot={{ fill: '#6375eb', r: 4 }} />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
 
       <DataTable
         columns={columns}
