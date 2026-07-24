@@ -8,6 +8,7 @@ import EmployeesPage from '@/pages/EmployeesPage'
 import DepartmentsPage from '@/pages/DepartmentsPage'
 import SpendingsPage from '@/pages/SpendingsPage'
 import ReportPage from '@/pages/ReportPage'
+import DatabaseQueriesPage from '@/pages/DatabaseQueriesPage'
 
 function App() {
   const { isAuthenticated } = useAuth()
@@ -30,6 +31,7 @@ function App() {
         <Route path="/departments" element={<DepartmentsPage />} />
         <Route path="/spendings" element={<SpendingsPage />} />
         <Route path="/reports" element={<ReportPage />} />
+        <Route path="/database-queries" element={<DatabaseQueriesPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
