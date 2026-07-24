@@ -154,4 +154,21 @@ PGAS-TEST/
 
 ## Power BI
 
-Endpoint `GET /api/reports/power-bi` mengembalikan data flat JSON yang bisa di-import ke Power BI Desktop via REST API connector.
+### Endpoint
+`GET /api/reports/power-bi` — mengembalikan data flat JSON (92 records spending 2020-2025) dengan kolom:
+`spending_id`, `employee_name`, `department_name`, `spending_date`, `value`, `year`, `month`, `month_name`
+
+### Dashboard File
+File `.pbix` tersedia di [`docs/power-bi/PGAS-Dashboard.pbix`](docs/power-bi/PGAS-Dashboard.pbix).
+
+### Cara Import
+1. Buka **Power BI Desktop** → **Get Data** → **Web**
+2. URL: `https://pgas.heyfik.net/api/reports/power-bi`
+3. Klik **Record** → **Convert to Table** → Expand kolom → **Load**
+4. Dashboard siap dengan visual: pie chart per departemen, line chart tren tahunan, slicer filter
+
+### Visual dalam .pbix
+- **KPI Card**: Total spending, Total transaksi
+- **Bar Chart**: Spending per departemen
+- **Line Chart**: Tren pengeluaran per tahun
+- **Slicer**: Filter tahun & bulan
