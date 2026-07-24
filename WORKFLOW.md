@@ -5,7 +5,7 @@
 1. **Setiap perubahan = 1 Issue** — jangan gabung banyak hal dalam 1 commit/PR
 2. **Test dulu sebelum push** — jalankan lint, typecheck, test backend
 3. **Commit kecil & fokus** — satu fitur/fix per commit, judul jelas
-4. **PR wajib untuk perubahan besar** — perubahan kecil bisa langsung ke `master`
+4. **Semua perubahan wajib PR** — tidak ada direct push ke `master`
 
 ---
 
@@ -75,8 +75,6 @@ docs: <dokumentasi>
    ```
 
 > ⚠️ Pakai `-D` (force delete) karena squash merge bikin commit baru — branch lokal tidak terdeteksi sebagai merged.
-
-> Perubahan kecil (typo, 1 file, non-fungsional) bisa langsung di `master` tanpa issue.
 
 ## 2. Deploy & Restart System
 
