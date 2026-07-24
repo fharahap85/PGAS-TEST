@@ -254,16 +254,15 @@ export default function ReportPage() {
             <CardTitle className="text-base font-bold">Pengeluaran per Departemen</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-72">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={deptChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
-                  <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
-<YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}Jt`} />
-                  <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
+            <ResponsiveContainer width="100%" height={288}>
+              <BarChart data={deptChart}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="value" fill="#6375eb" />
+              </BarChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
         <Card className="rounded-2xl shadow-sm">
@@ -271,16 +270,15 @@ export default function ReportPage() {
             <CardTitle className="text-base font-bold">Tren Pengeluaran per Tahun</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-72">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={yearChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
-                  <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
-<YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}Jt`} />
-                  <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
+            <ResponsiveContainer width="100%" height={288}>
+              <LineChart data={yearChart}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="year" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="value" stroke="#6375eb" />
+              </LineChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </div>
