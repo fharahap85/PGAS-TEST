@@ -155,6 +155,6 @@ router.get('/spendings/export/pdf', authMiddleware, spendingController.exportPdf
  *       200:
  *         description: Power BI compatible data
  */
-router.get('/power-bi', authMiddleware, spendingController.powerBiData);
+router.get('/power-bi', spendingController.powerBiData);
 
 module.exports = router;
