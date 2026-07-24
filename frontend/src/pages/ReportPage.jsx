@@ -259,9 +259,8 @@ export default function ReportPage() {
                 <BarChart data={deptChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
                   <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
-                  <YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}M`} />
+<YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}Jt`} />
                   <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
-                  <Bar dataKey="value" fill="#6375eb" radius={[6, 6, 0, 0]} maxBarSize={40} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -277,9 +276,8 @@ export default function ReportPage() {
                 <LineChart data={yearChart} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e2e8f1" />
                   <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#647b99' }} dy={10} />
-                  <YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}M`} />
+<YAxis tick={{ fontSize: 11, fill: '#647b99' }} tickFormatter={(v) => `Rp ${v / 1000000}Jt`} />
                   <Tooltip formatter={(v) => [formatRupiah(v), 'Total']} />
-                  <Line type="monotone" dataKey="value" stroke="#6375eb" strokeWidth={3} dot={{ fill: '#6375eb', r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
