@@ -153,10 +153,10 @@ INSERT INTO spendings (employee_id, spending_date, value) VALUES
 
 -- -------------------------------------------
 -- Seed: users (admin + user accounts)
--- Passwords are bcrypt hashed
--- admin123 = $2b$10$rICGcNMRZMJvzwXbMGBCeuJoy3mjQh.NKFVSn7t2U8g.LUhtqSbuO
--- user123  = $2b$10$Y9Ij5e3C8fWvkA7N1t7ZxOJqQZw4R3a5d6BhC9eF0gH1iJ2kL3mN4
+-- Passwords are bcrypt hashed (generated with bcryptjs)
+-- admin123 = $2a$10$Dc/4JmORRPWATQ8/IyrCzu29uTLaW.MsIZPalqtgFnKSC1cO0Cpjq
+-- user123  = $2a$10$gF2b0Tl/XnI2u/pcX/si.ef0fVky2XmM9lgr5S0/I3lXd/Ovv.8pG
 -- -------------------------------------------
 INSERT INTO users (username, email, password_hash, role) VALUES
-('Administrator', 'admin@pgastest.com', '$2b$10$rICGcNMRZMJvzwXbMGBCeuJoy3mjQh.NKFVSn7t2U8g.LUhtqSbuO', 'admin'),
-('User Demo', 'user@pgastest.com', '$2b$10$rICGcNMRZMJvzwXbMGBCeuJoy3mjQh.NKFVSn7t2U8g.LUhtqSbuO', 'user');
+('Administrator', 'admin@pgastest.com', '$2a$10$Dc/4JmORRPWATQ8/IyrCzu29uTLaW.MsIZPalqtgFnKSC1cO0Cpjq', 'admin'),
+('User Demo', 'user@pgastest.com', '$2a$10$gF2b0Tl/XnI2u/pcX/si.ef0fVky2XmM9lgr5S0/I3lXd/Ovv.8pG', 'user');
