@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/hooks/useAuth'
 import {
-  LayoutDashboard, Users, Building2, CreditCard, FileBarChart, LogOut, X, ShieldCheck
+  LayoutDashboard, Users, Building2, CreditCard, FileBarChart, Database, LogOut, X, ShieldCheck
 } from 'lucide-react'
 
 const navItems = [
@@ -11,6 +11,7 @@ const navItems = [
   { to: '/departments', label: 'Departemen', icon: Building2 },
   { to: '/spendings', label: 'Pengeluaran', icon: CreditCard },
   { to: '/reports', label: 'Laporan', icon: FileBarChart },
+  { to: '/database-queries', label: 'SQL Queries', icon: Database },
 ]
 
 export function Sidebar({ open, onClose }) {
