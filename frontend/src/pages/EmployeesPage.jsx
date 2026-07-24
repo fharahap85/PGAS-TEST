@@ -91,7 +91,7 @@ export default function EmployeesPage() {
   }
 
   const columns = [
-    { accessorKey: 'employee_id', header: 'ID', enableSorting: true },
+    { id: 'no', header: 'No', cell: ({ row }) => row.index + 1 },
     { accessorKey: 'employee_name', header: 'Nama Karyawan', enableSorting: true },
     {
       accessorKey: 'department_name',
