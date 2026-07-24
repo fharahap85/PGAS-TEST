@@ -96,7 +96,7 @@ export default function SpendingsPage() {
   }
 
   const columns = [
-    { accessorKey: 'spending_id', header: 'ID', enableSorting: true },
+    { id: 'no', header: 'No', cell: ({ row }) => row.index + 1 },
     { accessorKey: 'employee_name', header: 'Karyawan', enableSorting: true },
     {
       accessorKey: 'spending_date',
